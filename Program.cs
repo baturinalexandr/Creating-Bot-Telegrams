@@ -6,7 +6,7 @@ class Program
     static async Task Main(string[] args)
     {
         // Токен, полученный от @BotFather
-        string botToken = "";
+        string botToken = "7515320786:AAG_7q8H4TeDlR1_S7H_MCVxiBqG8X2UFYg";
         
 
         var botClient = new TelegramBotClient(botToken);
