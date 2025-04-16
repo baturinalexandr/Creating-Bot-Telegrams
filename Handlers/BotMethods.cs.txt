@@ -1,0 +1,31 @@
+using System.Threading.Tasks;
+using Telegram.Bot;
+using Telegram.Bot.Types;
+
+namespace YourProjectName.Handlers
+{
+    public static class BotMethods
+    {
+        public static async Task HandleStartCommand(Message message, ITelegramBotClient client)
+        {
+            await client.SendTextMessageAsync(message.Chat.Id, v: $"Привет, {message.From.Username},first_name.");
+        }
+
+        public static async Task HandleUnknownCommand(Message message, ITelegramBotClient client)
+        {
+            await client.SendTextMessageAsync(message.Chat.Id, "Нужно перейти по ссылке.");
+        }
+
+        public static async Task HandleMessage(Message message, ITelegramBotClient client)
+        {
+            // Здесь можно добавить обработку обычных сообщений
+            await client.SendTextMessageAsync(message.Chat.Id, "Ваше сообщение получено!");
+        }
+
+        public static Task HandlePollingErrorAsync(Exception ex)
+        {
+            Console.WriteLine($"Переход на сайт по ссылке: {ex.Message}");
+            return Task.CompletedTask;
+        }
+    }
+}
